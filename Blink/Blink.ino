@@ -4,18 +4,22 @@
  
   This example code is in the public domain.
  */
-    
-int pin = 12;
 
-void setup() {                
-  // initialize the digital pin as an output.
-  // Pin 13 has an LED connected on most Arduino boards:
-  pinMode(pin, OUTPUT);
+void setup() {
+  Serial.begin(9600);
+  for(int i=11;i<=13;i++) {
+    pinMode(i, OUTPUT);
+  }
 }
 
 void loop() {
-  digitalWrite(pin, HIGH);
-  delay(100);
-  digitalWrite(pin, LOW);
-  delay(100);
+  bool b = false;
+  for(int i=11;i<=13;i++) {
+    do {
+      digitalWrite(i, b?HIGH:LOW);
+      delay(b?100:10000);
+      b = !b;
+      Serial.println(b);
+    } while(b);
+  }
 }
