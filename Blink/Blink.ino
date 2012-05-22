@@ -7,17 +7,17 @@
 
 void setup() {
   Serial.begin(9600);
-  for(int i=11;i<=13;i++) {
+  for(int i=10;i<=13;i++) {
     pinMode(i, OUTPUT);
   }
 }
 
 void loop() {
   bool b = false;
-  for(int i=11;i<=13;i++) {
+  for(int i=10;i<=13;i++) {
     do {
       digitalWrite(i, b?HIGH:LOW);
-      delay(b?100:10000);
+      delay(10);
       b = !b;
       Serial.println(b);
     } while(b);
